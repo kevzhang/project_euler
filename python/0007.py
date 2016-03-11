@@ -1,18 +1,12 @@
 from math import log, sqrt
+import sieve
 
 def nth_prime(n):
 	sieve_size = int(n * log(n, 2))
-	sieve = [True] * sieve_size
-	sieve[0] = False
-	sieve[1] = False
-	sieve[2] = True
-	for x in range(2, int(sqrt(sieve_size)) + 2):
-		if sieve[x]:
-			for not_prime in (x*k for k in range(2, sieve_size) if x*k < sieve_size):
-				sieve[not_prime] = False
+	sieve_arr = sieve.compute_sieve(sieve_size)
 	found = 0
 	for x in range(2, sieve_size):
-		if sieve[x]:
+		if sieve_arr[x]:
 			found += 1
 			if found == n:
 				return x
