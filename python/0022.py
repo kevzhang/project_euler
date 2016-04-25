@@ -4,8 +4,5 @@ names.sort()
 def score(name, position):
 	return sum([ord(x) - ord('A') + 1 for x in name]) * position
 
-score_total = 0
-for i in range(len(names)):
-	score_total += score(names[i], i + 1)
-print score_total
-	
+print sum([score(names[i], i + 1) for i in range(len(names))])
+
