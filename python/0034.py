@@ -9,6 +9,5 @@ total = 0
 for num in range(10, limit):
 	if fac_sum(num) == num:
 		total += num
-		print num
 
 print total
