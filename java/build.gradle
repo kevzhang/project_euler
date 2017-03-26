@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'application'
+sourceCompatibility = 1.8
+mainClassName = "Main"
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
+run {
+    if (project.hasProperty('mainArgs')) {
+        args Eval.me('["' + mainArgs + '"]')
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:21.0'
+}
