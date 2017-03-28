@@ -22,6 +22,17 @@ public class Maths {
         return primes;
     }
 
+    public static ArrayList<Integer> generatePrimesBelow(int limit) {
+        boolean[] sieve = generateSieve(limit - 1);
+        ArrayList<Integer> primes = Lists.newArrayList();
+        for (int i = 0; i < sieve.length; i++) {
+            if (!sieve[i]) {
+                primes.add(i);
+            }
+        }
+        return primes;
+    }
+
     /**
      * false => prime
      * true => composite
