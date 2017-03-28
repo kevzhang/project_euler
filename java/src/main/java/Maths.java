@@ -1,8 +1,11 @@
 import java.math.RoundingMode;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 
@@ -31,6 +34,28 @@ public class Maths {
             }
         }
         return primes;
+    }
+
+    public static long triangleNumber(long index) {
+        return (index * (index + 1)) / 2;
+    }
+
+    public static Map<Long, Integer> getPrimeFactors(long n) {
+        Map<Long, Integer> primeFactors = Maps.newHashMap();
+        long curFactor = 2;
+        long remaining = n;
+        while (remaining > 1) {
+            int count = 0;
+            while (remaining % curFactor == 0) {
+                remaining /= curFactor;
+                count ++;
+            }
+            if (count > 0) {
+                primeFactors.put(curFactor, count);
+            }
+            curFactor++;
+        }
+        return primeFactors;
     }
 
     /**
