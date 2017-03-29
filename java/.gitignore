@@ -1,7 +1,11 @@
 build/*
 bin/*
+.idea/*
 .classpath
 .gradle
 .vscode
 .project
 .settings
+*.iml
+*.ipr
+*.iws
