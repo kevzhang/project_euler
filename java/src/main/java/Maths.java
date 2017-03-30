@@ -99,7 +99,11 @@ public class Maths {
             if (count > 0) {
                 primeFactors.put(curFactor, count);
             }
-            curFactor++;
+            if (curFactor > 2) {
+                curFactor += 2;
+            } else {
+                curFactor++;
+            }
         }
         return primeFactors;
     }

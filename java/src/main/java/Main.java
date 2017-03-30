@@ -1,3 +1,7 @@
+import com.google.common.base.Stopwatch;
+
+import java.util.concurrent.TimeUnit;
+
 public class Main {
 
     private static final int LIMIT = 200;
@@ -13,7 +17,10 @@ public class Main {
                 } catch (ClassNotFoundException e) {
                     return;
                 }
-                System.out.println(i + ": " + clazz.getMethod("solve").invoke(null));
+                Stopwatch start = Stopwatch.createStarted();
+                Object ans = clazz.getMethod("solve").invoke(null);
+                long elapsedMs = start.elapsed(TimeUnit.MILLISECONDS);
+                System.out.println(i + ": " + ans + " (" + elapsedMs + "ms)");
             }
         } else if (args.length == 1) {
             int index;
@@ -25,7 +32,10 @@ public class Main {
             } catch (NumberFormatException | ClassNotFoundException e) {
                 throw new IllegalArgumentException("Cannot resolve solution: " + args[0]);
             }
-            System.out.println(index + ": " + clazz.getMethod("solve").invoke(null));
+            Stopwatch start = Stopwatch.createStarted();
+            Object ans = clazz.getMethod("solve").invoke(null);
+            long elapsedMs = start.elapsed(TimeUnit.MILLISECONDS);
+            System.out.println(index + ": " + ans + " (" + elapsedMs + "ms)");
         } else {
             throw new IllegalArgumentException("Num args exceeds 1");
         }
