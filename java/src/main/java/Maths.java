@@ -1,13 +1,14 @@
 import java.math.RoundingMode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
+import com.google.common.math.LongMath;
 
 public class Maths {
 
@@ -38,6 +39,51 @@ public class Maths {
 
     public static long triangleNumber(long index) {
         return (index * (index + 1)) / 2;
+    }
+
+    public static List<Long> getDivisors(long n) {
+        ArrayList<Map.Entry<Long, Integer>> entries = Lists.newArrayList(getPrimeFactors(n).entrySet());
+        int[] multiplicityLimits = new int[entries.size()];
+        for (int i = 0; i < entries.size(); i++) {
+            multiplicityLimits[i] = entries.get(i).getValue();
+        }
+        int[] multiplicity = new int[entries.size()];
+
+        List<Long> divisors = Lists.newArrayList();
+        divisors.add(1L);
+        while (incrementVector(multiplicity, multiplicityLimits)) {
+            long curDivisor = 1L;
+            for (int i = 0; i < multiplicity.length; i++) {
+                curDivisor *= LongMath.pow(entries.get(i).getKey(), multiplicity[i]);
+            }
+            divisors.add(curDivisor);
+        }
+        Collections.sort(divisors);
+        return divisors;
+    }
+
+    public static boolean incrementVector(int[] vector, int[] limits) {
+        Preconditions.checkArgument(vector.length == limits.length, "Vectors not of same length.");
+        int size = vector.length;
+        for (int i = size - 1; i >= 0; i--) {
+            if (vector[i] < limits[i]) {
+                vector[i]++;
+                for (int j = i + 1; j < size; j++) {
+                    vector[j] = 0;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int numDivisors(long n) {
+        Map<Long, Integer> primeFactors = getPrimeFactors(n);
+        int numFactors = 1;
+        for (int multiplicity : primeFactors.values()) {
+            numFactors *= (multiplicity + 1);
+        }
+        return numFactors;
     }
 
     public static Map<Long, Integer> getPrimeFactors(long n) {
