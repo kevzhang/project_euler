@@ -15,13 +15,14 @@ public class Maths {
     public static ArrayList<Integer> generatePrimes(int numPrimes) {
         int sieveLimit = upperBoundNthPrime(numPrimes);
         boolean[] sieve = generateSieve(sieveLimit);
-        int sieveIndex = 2;
+        int sieveIndex = 3;
         ArrayList<Integer> primes = Lists.newArrayListWithCapacity(numPrimes);
+        primes.add(2);
         while (primes.size() < numPrimes) {
             if (!sieve[sieveIndex]) {
                 primes.add(sieveIndex);
             }
-            sieveIndex++;
+            sieveIndex+=2;
         }
         return primes;
     }
