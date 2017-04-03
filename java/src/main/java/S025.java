@@ -1,4 +1,7 @@
+import com.google.common.math.BigIntegerMath;
+
 import java.math.BigInteger;
+import java.math.RoundingMode;
 
 public class S025 {
 
@@ -9,7 +12,8 @@ public class S025 {
         BigInteger right = BigInteger.ONE;
         for (int i = 3;; i++) {
             BigInteger next = left.add(right);
-            if (next.toString().length() == DIGITS) {
+            int digits = BigIntegerMath.log10(next, RoundingMode.DOWN) + 1;
+            if (digits == DIGITS) {
                 return i;
             }
             left = right;
