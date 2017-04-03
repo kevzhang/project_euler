@@ -11,22 +11,16 @@ public class S023 {
 
     public static int solve() {
         ArrayList<Integer> abundants = getAbundantNumbers(LIMIT);
-        return IntStream.range(1, LIMIT).filter(i -> !canSum(abundants, i)).sum();
-    }
-
-    private static boolean canSum(ArrayList<Integer> sortedValues, int target) {
-        int lower = 0, upper = sortedValues.size() - 1;
-        while (lower <= upper) {
-            int curSum = sortedValues.get(lower) + sortedValues.get(upper);
-            if (curSum == target) {
-                return true;
-            } else if (curSum < target) {
-                lower++;
-            } else {
-                upper--;
+        boolean[] canSumTo = new boolean[LIMIT];
+        for (int i = 0; i < abundants.size(); i++) {
+            for (int j = i; j < abundants.size(); j++) {
+                int sum = abundants.get(i) + abundants.get(j);
+                if (sum < LIMIT) {
+                    canSumTo[abundants.get(i) + abundants.get(j)] = true;
+                }
             }
         }
-        return false;
+        return IntStream.range(1, LIMIT).filter(i -> !canSumTo[i]).sum();
     }
 
     private static int properDivisorSum(int n) {
