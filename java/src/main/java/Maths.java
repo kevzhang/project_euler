@@ -174,6 +174,17 @@ public class Maths {
         return true;
     }
 
+    public static long[] getPartialSums(long[] values) {
+        long[] partialSums = new long[values.length + 1];
+        long sum = 0;
+        partialSums[0] = sum;
+        for (int i = 0; i < values.length; i++) {
+            sum += values[i];
+            partialSums[i + 1] = sum;
+        }
+        return partialSums;
+    }
+
     /**
      * @param n
      * @return array of exactly size 10
