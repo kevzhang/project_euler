@@ -174,4 +174,18 @@ public class Maths {
         return true;
     }
 
+    /**
+     * @param n
+     * @return array of exactly size 10
+     */
+    public static int[] getDigitFrequency(long n) {
+        long remaining = n;
+        int[] digitFrequency = new int[10];
+        while (remaining > 0) {
+            digitFrequency[(int) (remaining % 10)]++;
+            remaining /= 10;
+        }
+        return digitFrequency;
+    }
+
 }
