@@ -1,14 +1,12 @@
-import java.math.RoundingMode;
-
-import java.util.*;
-
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 import com.google.common.math.LongMath;
+
+import java.math.RoundingMode;
+import java.util.*;
 
 public class Maths {
 
@@ -40,6 +38,14 @@ public class Maths {
 
     public static long triangleNumber(long index) {
         return (index * (index + 1)) / 2;
+    }
+
+    public static long pentagonalNumber(long index) {
+        return index * (3 * index - 1) / 2;
+    }
+
+    public static long hexagonalNumber(long index) {
+        return index * (2 * index - 1);
     }
 
     public static List<Long> getDivisors(long n) {
