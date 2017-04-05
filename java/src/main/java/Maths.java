@@ -139,4 +139,33 @@ public class Maths {
         }
         return DoubleMath.roundToInt(upperBound, RoundingMode.UP);
     }
+
+    /**
+     * @param a array of UNIQUE elements
+     * @return true if next lexicographic permutation is achieved. false if lexicographic order is maxed out
+     */
+    public static boolean incrementPermutation(int[] a) {
+        int inversionPoint = -1;
+        for (int i = a.length - 2; i >= 0; i--) {
+            if (a[i] < a[i + 1]) {
+                inversionPoint = i;
+                break;
+            }
+        }
+        if (inversionPoint == -1) {
+            return false;
+        }
+        int nextBiggerIdx = inversionPoint + 1;
+        for (int i = a.length - 1; i > inversionPoint; i--) {
+            if (a[i] > a[inversionPoint] && a[i] < a[nextBiggerIdx]) {
+                nextBiggerIdx = i;
+            }
+        }
+        int tmp = a[inversionPoint];
+        a[inversionPoint] = a[nextBiggerIdx];
+        a[nextBiggerIdx] = tmp;
+        Arrays.sort(a, inversionPoint + 1, a.length);
+        return true;
+    }
+
 }
