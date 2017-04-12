@@ -199,4 +199,24 @@ public class Maths {
         return digitFrequency;
     }
 
+    public static int[] getDigits(long n) {
+        int nDigits = LongMath.log10(n, RoundingMode.DOWN) + 1;
+        long remaining = n;
+        int[] digits  = new int[nDigits];
+        int digitIdx = nDigits - 1;
+        while (remaining > 0) {
+            digits[digitIdx--] = (int) (remaining % 10);
+            remaining /= 10;
+        }
+        return digits;
+    }
+
+    public static long digitToLong(int[] digits) {
+        long number = digits[0];
+        for (int i = 1; i < digits.length; i++) {
+            number = number * 10 + digits[i];
+        }
+        return number;
+    }
+
 }
