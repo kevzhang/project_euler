@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-// TODO: way too bespoke
 public class S052 {
 
     public static int solve() {

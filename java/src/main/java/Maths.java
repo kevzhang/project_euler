@@ -10,6 +10,8 @@ import java.util.*;
 
 public class Maths {
 
+    public static final int MILLION = 1000 * 1000;
+
     public static ArrayList<Integer> generatePrimes(int numPrimes) {
         int sieveLimit = upperBoundNthPrime(numPrimes);
         boolean[] sieve = generateSieve(sieveLimit);
