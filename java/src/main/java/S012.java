@@ -1,5 +1,3 @@
-import java.util.Map;
-
 public class S012 {
     public static long solve() {
         int index = 1;

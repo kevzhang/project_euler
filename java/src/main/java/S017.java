@@ -1,12 +1,11 @@
-import java.math.BigInteger;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.IntStream;
-
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.IntStream;
 
 public class S017 {
 

@@ -1,6 +1,6 @@
-import java.util.List;
-
 import com.google.common.base.Splitter;
+
+import java.util.List;
 
 public class S018 {
     public static int solve() {

@@ -1,9 +1,8 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Splitter;
 import com.google.common.collect.Ordering;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class S011 {
 

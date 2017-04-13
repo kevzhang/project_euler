@@ -1,9 +1,4 @@
-import java.math.BigInteger;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import com.google.common.collect.Lists;
 
 public class S021 {
 

@@ -1,6 +1,6 @@
-import java.math.BigInteger;
-
 import com.google.common.collect.Lists;
+
+import java.math.BigInteger;
 
 public class S020 {
 

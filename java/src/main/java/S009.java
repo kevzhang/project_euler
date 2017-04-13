@@ -1,6 +1,6 @@
-import java.math.RoundingMode;
-
 import com.google.common.math.DoubleMath;
+
+import java.math.RoundingMode;
 
 public class S009 {
 
