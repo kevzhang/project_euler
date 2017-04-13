@@ -12,4 +12,12 @@ public class Strings {
         }
         return true;
     }
+
+    public static String reverse(String s) {
+        char[] reversed = new char[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            reversed[i] = s.charAt(s.length() - 1 - i);
+        }
+        return new String(reversed);
+    }
 }
