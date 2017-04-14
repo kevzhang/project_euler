@@ -9,6 +9,7 @@ import com.google.common.math.LongMath;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.function.IntPredicate;
 
 public class Maths {
 
@@ -201,6 +202,16 @@ public class Maths {
             remaining /= 10;
         }
         return digitFrequency;
+    }
+
+    public static int count(int[] arr, IntPredicate pred) {
+        int sum = 0;
+        for (int i : arr) {
+            if (pred.test(i)) {
+                sum ++;
+            }
+        }
+        return sum;
     }
 
     public static int[] getDigits(long n) {
