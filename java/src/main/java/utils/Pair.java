@@ -1,4 +1,4 @@
-package collections;
+package utils;
 
 public class Pair<S, T> {
     private final S left;

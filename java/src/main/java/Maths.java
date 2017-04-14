@@ -1,10 +1,12 @@
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.math.BigIntegerMath;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 import com.google.common.math.LongMath;
 
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.*;
 
@@ -219,6 +221,10 @@ public class Maths {
             number = number * 10 + digits[i];
         }
         return number;
+    }
+
+    public static int numDigits(BigInteger n) {
+        return BigIntegerMath.log10(n, RoundingMode.DOWN) + 1;
     }
 
 }

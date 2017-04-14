@@ -1,5 +1,5 @@
-import collections.Pair;
-import collections.PeCollections;
+import utils.Pair;
+import utils.PeCollections;
 import com.google.common.base.Splitter;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Lists;
