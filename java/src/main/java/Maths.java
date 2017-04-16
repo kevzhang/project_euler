@@ -74,6 +74,31 @@ public class Maths {
         return divisors;
     }
 
+    public static int[] initializeChooseVector(int size) {
+        int[] vector = new int[size];
+        for (int i = 0; i < size; i++) {
+            vector[i] = i;
+        }
+        return vector;
+    }
+
+    // (0, 1) -> (0, 2) -> (0, 3) -> (1, 2) -> (1, 3) -> (2, 3)
+    public static boolean incrementChooseVector(int[] vector, int limit) {
+        int size = vector.length;
+        for (int i = size - 1; i >= 0; i--) {
+            int adjustedLimit = limit - ((size - 1) - i);
+            if (vector[i] < adjustedLimit - 1) {
+                vector[i]++;
+                for (int j = i + 1; j < size; j++) {
+                    vector[j] = vector[j - 1] + 1;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // (0, 0) -> (0, 1) -> ... -> (0, 3) -> (1, 0) -> (1, 1) -> ... -> (3, 3)
     public static boolean incrementVector(int[] vector, int[] limits) {
         Preconditions.checkArgument(vector.length == limits.length, "Vectors not of same length.");
         int size = vector.length;
@@ -177,6 +202,22 @@ public class Maths {
         a[nextBiggerIdx] = tmp;
         Arrays.sort(a, inversionPoint + 1, a.length);
         return true;
+    }
+
+    public static int sum(int[] values, int limit) {
+        int sum = 0;
+        for (int i = 0; i < limit; i++) {
+            sum += values[i];
+        }
+        return sum;
+    }
+
+    public static int sum(int[] values) {
+        int sum = 0;
+        for (int v : values) {
+            sum += v;
+        }
+        return sum;
     }
 
     public static long[] getPartialSums(long[] values) {
