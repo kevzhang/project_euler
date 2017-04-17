@@ -283,6 +283,18 @@ public class Maths {
         return sum;
     }
 
+    /**
+     * @param n >= 0
+     */
+    public static int[] getDigits(BigInteger n) {
+        String s = n.toString();
+        int[] digits = new int[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            digits[i] = s.charAt(i) - '0';
+        }
+        return digits;
+    }
+
     public static int[] getDigits(long n) {
         int nDigits = LongMath.log10(n, RoundingMode.DOWN) + 1;
         long remaining = n;

@@ -10,6 +10,7 @@ public class Fraction {
     private final BigInteger denominator;
 
     public static final Fraction ONE = create(BigInteger.ONE);
+    public static final Fraction ZERO = create(BigInteger.ZERO);
 
     private Fraction(BigInteger[] params) {
         this.numerator = params[0];
@@ -22,8 +23,7 @@ public class Fraction {
     }
 
     public static Fraction create(BigInteger numerator, BigInteger denominator) {
-        Preconditions.checkArgument(!numerator.equals(BigInteger.ZERO), "Dividing by 0 in fraction.");
-        Preconditions.checkArgument(!denominator.equals(BigInteger.ZERO), "Creating 0 fraction. (are you sure?)");
+        Preconditions.checkArgument(!denominator.equals(BigInteger.ZERO), "Dividing by 0 in fraction.");
         return new Fraction(simplify(numerator, denominator));
     }
 
