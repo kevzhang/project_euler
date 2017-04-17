@@ -8,9 +8,9 @@ public class S045 {
     private static final int LOWER_H = 143;
 
     public static long solve() {
-        int t = LOWER_T  + 1;
-        int p = LOWER_P + 1;
-        int h = LOWER_H + 1;
+        long t = LOWER_T  + 1;
+        long p = LOWER_P + 1;
+        long h = LOWER_H + 1;
 
         long tN = Maths.triangleNumber(t);
         long pN = Maths.pentagonalNumber(p);

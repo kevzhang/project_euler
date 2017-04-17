@@ -45,12 +45,40 @@ public class Maths {
         return (index * (index + 1)) / 2;
     }
 
+    public static int triangleNumber(int index) {
+        return (index * (index + 1)) / 2;
+    }
+
     public static long pentagonalNumber(long index) {
+        return index * (3 * index - 1) / 2;
+    }
+
+    public static int pentagonalNumber(int index) {
         return index * (3 * index - 1) / 2;
     }
 
     public static long hexagonalNumber(long index) {
         return index * (2 * index - 1);
+    }
+
+    public static int hexagonalNumber(int index) {
+        return index * (2 * index - 1);
+    }
+
+    public static long heptagonalNumber(long index) {
+        return index * (5 * index - 3) / 2;
+    }
+
+    public static int heptagonalNumber(int index) {
+        return index * (5 * index - 3) / 2;
+    }
+
+    public static long octagonalNumber(long index) {
+        return index * (3 * index - 2);
+    }
+
+    public static int octagonalNumber(int index) {
+        return index * (3 * index - 2);
     }
 
     public static List<Long> getDivisors(long n) {
