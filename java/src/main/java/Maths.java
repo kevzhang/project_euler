@@ -1,6 +1,7 @@
 import com.google.common.base.Preconditions;
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.Multiset;
 import com.google.common.math.BigIntegerMath;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
@@ -8,7 +9,10 @@ import com.google.common.math.LongMath;
 
 import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.IntPredicate;
 
 public class Maths {
@@ -82,10 +86,10 @@ public class Maths {
     }
 
     public static List<Long> getDivisors(long n) {
-        ArrayList<Map.Entry<Long, Integer>> entries = Lists.newArrayList(getPrimeFactors(n).entrySet());
+        ArrayList<Multiset.Entry<Long>> entries = Lists.newArrayList(getPrimeFactors(n).entrySet());
         int[] multiplicityLimits = new int[entries.size()];
         for (int i = 0; i < entries.size(); i++) {
-            multiplicityLimits[i] = entries.get(i).getValue();
+            multiplicityLimits[i] = entries.get(i).getCount();
         }
         int[] multiplicity = new int[entries.size()];
 
@@ -94,7 +98,7 @@ public class Maths {
         while (incrementVector(multiplicity, multiplicityLimits)) {
             long curDivisor = 1L;
             for (int i = 0; i < multiplicity.length; i++) {
-                curDivisor *= LongMath.pow(entries.get(i).getKey(), multiplicity[i]);
+                curDivisor *= LongMath.pow(entries.get(i).getElement(), multiplicity[i]);
             }
             divisors.add(curDivisor);
         }
@@ -143,26 +147,22 @@ public class Maths {
     }
 
     public static int numDivisors(long n) {
-        Map<Long, Integer> primeFactors = getPrimeFactors(n);
+        Multiset<Long> primeFactors = getPrimeFactors(n);
         int numFactors = 1;
-        for (int multiplicity : primeFactors.values()) {
-            numFactors *= (multiplicity + 1);
+        for (Multiset.Entry<Long> entry : primeFactors.entrySet()) {
+            numFactors *= entry.getCount() + 1;
         }
         return numFactors;
     }
 
-    public static Map<Long, Integer> getPrimeFactors(long n) {
-        Map<Long, Integer> primeFactors = Maps.newHashMap();
+    public static Multiset<Long> getPrimeFactors(long n) {
+        HashMultiset<Long> primeFactors = HashMultiset.create();
         long curFactor = 2;
         long remaining = n;
         while (remaining > 1) {
-            int count = 0;
             while (remaining % curFactor == 0) {
                 remaining /= curFactor;
-                count ++;
-            }
-            if (count > 0) {
-                primeFactors.put(curFactor, count);
+                primeFactors.add(curFactor);
             }
             if (curFactor > 2) {
                 curFactor += 2;
