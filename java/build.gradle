@@ -11,8 +11,8 @@ jar {
 }
 
 run {
-    if (project.hasProperty('mainArgs')) {
-        args Eval.me('["' + mainArgs + '"]')
+    if (project.hasProperty('num')) {
+        args Eval.me('["' + num + '"]')
     }
 }
 
