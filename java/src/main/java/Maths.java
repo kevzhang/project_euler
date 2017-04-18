@@ -331,4 +331,15 @@ public class Maths {
         return LongMath.pow(LongMath.sqrt(n, RoundingMode.DOWN), 2) == n;
     }
 
+    public static long phi(long n) {
+        Multiset<Long> primeFactors = getPrimeFactors(n);
+        int phi = 1;
+        for (Multiset.Entry<Long> entry : primeFactors.entrySet()) {
+            long base = entry.getElement();
+            int exp = entry.getCount();
+            phi *= LongMath.pow(base, exp - 1) * (base - 1);
+        }
+        return phi;
+    }
+
 }
