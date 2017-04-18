@@ -319,4 +319,8 @@ public class Maths {
         return BigIntegerMath.log10(n, RoundingMode.DOWN) + 1;
     }
 
+    public static boolean isSquare(long n) {
+        return LongMath.pow(LongMath.sqrt(n, RoundingMode.DOWN), 2) == n;
+    }
+
 }
