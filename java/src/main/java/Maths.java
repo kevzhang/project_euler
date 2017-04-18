@@ -204,6 +204,14 @@ public class Maths {
         return DoubleMath.roundToInt(upperBound, RoundingMode.UP);
     }
 
+    public static int[] initPermutation(int n) {
+        int[] permutation = new int[n];
+        for (int i = 0; i < n; i++) {
+            permutation[i] = i;
+        }
+        return permutation;
+    }
+
     /**
      * @param a array of UNIQUE elements
      * @return true if next lexicographic permutation is achieved. false if lexicographic order is maxed out
