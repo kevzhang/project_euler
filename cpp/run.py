@@ -25,7 +25,9 @@ shell('mkdir out')
 # Compile all sources
 print 'Compiling all solutions...'
 compile_commands = [COMPILE.format(ext, ext.split('.')[0]) for ext in SOURCE_EXTS]
-results = Pool(16).map(shell, compile_commands)
+pool = Pool(16)
+results = pool.map(shell, compile_commands)
+pool.close()
 for result in results:
     if result['return_code'] != 0:
         print '\n'.join(result['output'])
