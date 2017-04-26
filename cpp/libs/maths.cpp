@@ -19,6 +19,14 @@ int int_pow(int a, int b) {
     return pow;
 }
 
+int max_int(int size, int arr[]) {
+    int max_int = arr[0];
+    for (int i = 1; i < size; i++) {
+        max_int = std::max(max_int, arr[i]);
+    }
+    return max_int;
+}
+
 std::pair<double, double> solve_quadratic(int a, int b, int c) {
     double first = (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
     double second = (-b - sqrt(b * b - 4 * a * c)) / (2 * a);
