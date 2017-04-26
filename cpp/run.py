@@ -40,4 +40,4 @@ for idx in range(len(SOURCE_EXTS)):
     start = time.time()
     ans = shell(RUN.format(name))['output'][0]
     total_time_ms = int((time.time() - start) * 1000)
-    print "{0}: {1} ({2}ms)".format(idx, ans, total_time_ms)
+    print "{0}: {1} ({2}ms)".format(idx + 1, ans, total_time_ms)
