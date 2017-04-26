@@ -27,6 +27,22 @@ int max_int(int size, int arr[]) {
     return max_int;
 }
 
+int num_divisors(int n) {
+    int n_divisors = 1;
+    int remaining = n;
+    int cur_factor = 2;
+    while (remaining > 1) {
+        int factor_count = 0;
+        while (remaining % cur_factor == 0) {
+            remaining /= cur_factor;
+            factor_count++;
+        }
+        n_divisors *= (factor_count + 1);
+        cur_factor += cur_factor == 2 ? 1 : 2;
+    }
+    return n_divisors;
+}
+
 std::pair<double, double> solve_quadratic(int a, int b, int c) {
     double first = (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
     double second = (-b - sqrt(b * b - 4 * a * c)) / (2 * a);
