@@ -5,7 +5,7 @@ import sys
 import time
 
 LIST_SOLUTIONS = 'ls -1 | grep ^S...[.]cpp$'
-COMPILE = 'g++ -I libs -O3 {0} -o out/{1}.out'
+COMPILE = 'g++ -Werror -I libs -O3 {0} -o out/{1}.out'
 RUN = './out/{0}.out'
 
 def shell(cmd):
