@@ -4,8 +4,33 @@
 
 using namespace std;
 
+inline long factorial(int n) {
+    long prod = 1;
+    for (int i = 2; i <= n; i++) {
+        prod *= i;
+    }
+    return prod;
+}
+
+long gcd(long a, long b) {
+    return a == 0 ? b : gcd(b % a, a);
+}
+
 int gcd(int a, int b) {
     return a == 0 ? b : gcd(b % a, a);
+}
+
+inline long binomial(long n, long k) {
+    long res = 1;
+    k = min(k, n - k);
+    long to_divide = factorial(k);
+    for (int a = n; a > (n - k); a--) {
+        long can_divide = gcd((long) a, to_divide);
+        res *= a / can_divide;
+        to_divide /= can_divide;
+    }
+    res /= to_divide;
+    return res;
 }
 
 int triangle(int n) {
