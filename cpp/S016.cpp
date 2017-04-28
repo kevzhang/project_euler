@@ -1,19 +1,12 @@
 #include <iostream>
 #include <vector>
 #include "maths.cpp"
+#include "strings.cpp"
 
 using namespace std;
 
 static const int EXP = 1000;
 static const int BIG_INT_BLOCK_SIZE = sizeof(unsigned int) * 8;
-
-int sum_digits(string number) {
-    int sum = 0;
-    for (int i = 0; i < number.length(); i++) {
-        sum += number[i] - '0';
-    }
-    return sum;
-}
 
 int main() {
     vector<unsigned int> big_int_data((EXP / BIG_INT_BLOCK_SIZE) + 1);

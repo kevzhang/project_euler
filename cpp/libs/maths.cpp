@@ -169,12 +169,18 @@ class BigInteger {
         BigInteger(const vector<unsigned int>& vec) {
             data = vec;
         }
+        BigInteger(const long number) : BigInteger(std::to_string(number)) {}
         BigInteger(const string& number) {
             data = zero();
             for (int i = 0; i < number.length(); i++) {
                 _times(data, 10, BASE);
                 _add(data, number[i] - '0', BASE);
             }
+        }
+        BigInteger times(unsigned int by) {
+            BigInteger copy = *this;
+            copy._times(copy.data, by, BASE);
+            return copy;
         }
         BigInteger add(const BigInteger& big) {
             BigInteger copy = *this;
