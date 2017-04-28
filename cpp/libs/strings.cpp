@@ -45,6 +45,17 @@ template<typename T> string to_string(vector<T> vec) {
 	return s;
 }
 
+template<typename T> string join(const string& join_by, vector<T> vec) {
+	stringstream ss;
+	for (auto i = 0; i < vec.size(); i++) {
+		if (i != 0) {
+			ss << join_by;
+		}
+		ss << to_string(vec[i]);
+	}
+	return ss.str();
+}
+
 template<typename T> string to_string(T arr[], int N) {
 	if (!N) {
 		return "[]";
