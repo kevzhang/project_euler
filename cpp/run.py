@@ -8,6 +8,11 @@ LIST_SOLUTIONS = 'ls -1 | grep ^S...[.]cpp$'
 COMPILE = 'g++ -std=c++11 -Werror -I libs -O3 {0} -o out/{1}.out'
 RUN = './out/{0}.out'
 
+# Append answers as they are solved
+ANS = ["233168", "4613732", "6857", "906609", "232792560", "25164150", "104743", "23514624000", "31875000",\
+        "142913828922", "70600674", "76576500", "5537376230", "837799", "137846528820", "1366", "21124", "1074",\
+        "171", "648"]
+
 def shell(cmd):
     res = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
     stdout_lines = [line[:-1] for line in res.stdout.readlines()]
@@ -40,4 +45,10 @@ for idx in range(len(SOURCE_EXTS)):
     start = time.time()
     ans = shell(RUN.format(name))['output'][0]
     total_time_ms = int((time.time() - start) * 1000)
-    print "{0}: {1} ({2}ms)".format(idx + 1, ans, total_time_ms)
+    output = "{0}: {1} ({2}ms)".format(idx + 1, ans, total_time_ms)
+    if idx >= len(ANS):
+        output += " * UNVERIFIED *"
+    elif ans != ANS[idx]:
+        output += " * INCORRECT *"
+
+    print output
