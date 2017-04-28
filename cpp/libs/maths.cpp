@@ -12,11 +12,7 @@ inline long factorial(int n) {
     return prod;
 }
 
-long gcd(long a, long b) {
-    return a == 0 ? b : gcd(b % a, a);
-}
-
-int gcd(int a, int b) {
+template<typename T> T gcd(T a, T b) {
     return a == 0 ? b : gcd(b % a, a);
 }
 
@@ -33,33 +29,33 @@ inline long binomial(long n, long k) {
     return res;
 }
 
-int triangle(int n) {
+template<typename T> T triangle(T n) {
     return n * (n + 1) / 2;
 }
 
-int int_pow(int a, int b) {
+template<typename T> T int_pow(T a, T b) {
     if (b == 0) {
         return 1;
     }
-    int pow = a;
-    for (int i = 1; i < b; i++) {
+    T pow = a;
+    for (T i = 1; i < b; i++) {
         pow *= a;
     }
     return pow;
 }
 
-int max_int(int size, int arr[]) {
-    int max_int = arr[0];
+template<typename T> T max_val(int size, T arr[]) {
+    T max_val = arr[0];
     for (int i = 1; i < size; i++) {
-        max_int = max(max_int, arr[i]);
+        max_val = max(max_val, arr[i]);
     }
-    return max_int;
+    return max_val;
 }
 
-int num_divisors(int n) {
+template<typename T> int num_divisors(T n) {
     int n_divisors = 1;
-    int remaining = n;
-    int cur_factor = 2;
+    T remaining = n;
+    T cur_factor = 2;
     while (remaining > 1) {
         int factor_count = 0;
         while (remaining % cur_factor == 0) {
@@ -78,7 +74,7 @@ pair<double, double> solve_quadratic(int a, int b, int c) {
     return make_pair(first, second);
 }
 
-int sum_of_squares(int n) {
+template<typename T> T sum_of_squares(T n) {
     return n * (n + 1) * (2 * n + 1) / 6;
 }
 

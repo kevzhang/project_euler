@@ -14,7 +14,7 @@ pair<int, int> find_ab(int side_sum, int c) {
 	if (isnan(solns.first) || isnan(solns.second)) {
 		return make_pair(-1, -1);
 	} else {
-		if (int_pow(solns.first, 2) + int_pow(solns.second, 2) == sum_of_squares) {
+		if (int_pow((int)solns.first, 2) + int_pow((int)solns.second, 2) == sum_of_squares) {
 			return make_pair(solns.first, solns.second);
 		} else {
 			return make_pair(-1, -1);

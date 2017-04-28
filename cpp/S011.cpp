@@ -49,7 +49,7 @@ int main() {
 			int right = product(grid, r, c, 0, 1);
 			int down_right = product(grid, r, c, 1, 1);
 			int down_left = product(grid, r, c, 1, -1);
-			max_prod = max_int(5, (int[]){max_prod, down, right, down_right, down_left});
+			max_prod = max_val(5, (int[]){max_prod, down, right, down_right, down_left});
 		}
 	}
 	cout << max_prod << endl;
