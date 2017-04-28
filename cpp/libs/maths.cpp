@@ -100,7 +100,21 @@ template<typename T> T _product(vector<T> primes, vector<int> powers) {
     return product;
 }
 
-template<typename T> T sum_divisors(T n) {
+template<typename T> T sum_divisors_brute_force(T n) {
+    T divisor_sum = 0;
+    T n_sqrt = sqrt(n);
+    for (T fac = 1; fac <= n_sqrt; fac++) {
+        if (n % fac == 0) {
+            divisor_sum += fac + (n / fac);
+        }
+    }
+    if (n_sqrt * n_sqrt == n) {
+        divisor_sum -= n_sqrt;
+    }
+    return divisor_sum;
+}
+
+template<typename T> T sum_divisors_from_factors(T n) {
     vector<pair<T, int>> factors = get_entries(prime_factorization(n));
     vector<int> power_vector(factors.size());
     vector<int> power_limits(factors.size());

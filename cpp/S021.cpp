@@ -6,7 +6,7 @@ using namespace std;
 static const int LIMIT = 10 * 1000;
 
 int proper_divisor_sum(int n) {
-    return sum_divisors(n) - n;
+    return sum_divisors_brute_force(n) - n;
 }
 
 bool is_amicable_sum(int n) {
