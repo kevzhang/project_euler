@@ -261,6 +261,24 @@ class BigInteger {
             copy._add(copy.data, big.data, BASE);
             return copy;
         }
+        int compare(const BigInteger& big) {
+            vector<unsigned int> this_data = this->data;
+            vector<unsigned int> that_data = big.data;
+            if (this_data.size() > that_data.size()) {
+                return 1;
+            } else if (this_data.size() < that_data.size()) {
+                return -1;
+            } else {
+                for (int i = this_data.size() - 1; i >= 0; i++) {
+                    if (this_data[i] > that_data[i]) {
+                        return 1;
+                    } else if (this_data[i] < that_data[i]) {
+                        return -1;
+                    }
+                }
+                return 0;
+            }
+        }
         string to_string() {
             string str;
             vector<unsigned int> base_10 = zero();
