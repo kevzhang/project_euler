@@ -1,5 +1,6 @@
 #include <cmath>
 #include <vector>
+#include <map>
 #include <climits>
 
 using namespace std;
@@ -50,6 +51,69 @@ template<typename T> T max_val(int size, T arr[]) {
         max_val = max(max_val, arr[i]);
     }
     return max_val;
+}
+
+template<typename T> bool increment_vector(vector<T>& vec, vector<T>& limits) {
+    for (int i = vec.size() - 1; i >= 0; i--) {
+        if (vec[i] < limits[i] - 1) {
+            vec[i]++;
+            for (int j = i + 1; j < vec.size(); j++) {
+                vec[j] = 0;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+template<typename K, typename V> vector<pair<K, V>> get_entries(map<K, V> m) {
+    vector<pair<K, V>> entries(m.size());
+    for (auto elem : m) {
+        entries.push_back({elem.first, elem.second});
+    }
+    return entries;
+}
+
+template<typename T> map<T, int> prime_factorization(T n) {
+    map<T, int> factorization;
+    T remaining = n;
+    T cur_factor = 2;
+    while (remaining > 1) {
+        int factor_count = 0;
+        while (remaining % cur_factor == 0) {
+            remaining /= cur_factor;
+            factor_count++;
+        }
+        if (factor_count) {
+            factorization[cur_factor] = factor_count;
+        }
+        cur_factor += cur_factor == 2 ? 1 : 2;
+    }
+    return factorization;
+}
+
+template<typename T> T _product(vector<T> primes, vector<int> powers) {
+    T product = 1;
+    for (int i = 0; i < primes.size(); i++) {
+        product *= int_pow(primes[i], powers[i]);
+    }
+    return product;
+}
+
+template<typename T> T sum_divisors(T n) {
+    vector<pair<T, int>> factors = get_entries(prime_factorization(n));
+    vector<int> power_vector(factors.size());
+    vector<int> power_limits(factors.size());
+    vector<T> primes(factors.size());
+    for (int i = 0; i < factors.size(); i++) {
+        power_limits[i] = factors[i].second + 1;
+        primes[i] = factors[i].first;
+    }
+    T divisor_sum = 0;
+    do {
+        divisor_sum += _product(primes, power_vector);
+    } while (increment_vector(power_vector, power_limits));
+    return divisor_sum;
 }
 
 template<typename T> int num_divisors(T n) {

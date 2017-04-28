@@ -32,7 +32,7 @@ string to_string(vector<string> vec) {
 	return s;
 }
 
-string to_string(vector<int> vec) {
+template<typename T> string to_string(vector<T> vec) {
 	if (vec.empty()) {
 		return "[]";
 	}
@@ -40,6 +40,19 @@ string to_string(vector<int> vec) {
 	s += to_string(vec[0]);
 	for (int i = 1; i < vec.size(); i++) {
 		s += ", " + to_string(vec[i]);
+	}
+	s += ']';
+	return s;
+}
+
+template<typename T> string to_string(T arr[], int N) {
+	if (!N) {
+		return "[]";
+	}
+	string s = "[";
+	s += to_string(arr[0]);
+	for (int i = 1; i < N; i++) {
+		s += ", " + to_string(arr[i]);
 	}
 	s += ']';
 	return s;
