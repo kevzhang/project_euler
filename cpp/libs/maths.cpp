@@ -38,6 +38,38 @@ inline long factorial(int n) {
     }
 }
 
+static const unsigned long POW_10[] = {
+    1L,
+    10L,
+    100L,
+    1000L,
+    10000L,
+    100000L,
+    1000000L,
+    10000000L,
+    100000000L,
+    1000000000L,
+    10000000000L,
+    100000000000L,
+    1000000000000L,
+    10000000000000L,
+    100000000000000L,
+    1000000000000000L,
+    10000000000000000L,
+    100000000000000000L,
+    1000000000000000000L,
+    10000000000000000000UL,
+};
+
+template<typename T> int log_10(T n) {
+    for (int i = 0; i < 20; i++) {
+        if (POW_10[i] > n) {
+            return i - 1;
+        }
+    }
+    return 19;
+}
+
 template<typename T> T gcd(T a, T b) {
     return a == 0 ? b : gcd(b % a, a);
 }
