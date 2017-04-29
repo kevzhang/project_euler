@@ -1,8 +1,11 @@
 #include <cmath>
+#include <vector>
 
-bool* compute_sieve(int limit) {
-    bool* sieve = (bool*) malloc(sizeof(bool) * limit);
-    memset(sieve, 1, sizeof(bool) * limit);
+using namespace std;
+
+vector<bool> compute_sieve(int limit) {
+    vector<bool> sieve(limit);
+    fill(sieve.begin(), sieve.end(), true);
     sieve[0] = false;
     sieve[1] = false;
     int sqrt_limit = (int) sqrt(limit);
