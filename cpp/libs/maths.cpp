@@ -1,5 +1,6 @@
 #include <cmath>
 #include <vector>
+#include <algorithm>
 #include <map>
 #include <climits>
 
@@ -108,6 +109,29 @@ template<typename T> T max_val(int size, T arr[]) {
         max_val = max(max_val, arr[i]);
     }
     return max_val;
+}
+
+// @ vec contains distinct values
+template<typename T> bool increment_permutation(vector<T>& vec) {
+    int pivot_idx = -1;
+    for (int i = vec.size() - 2; i >= 0; i--) {
+        if (vec[i] < vec[i + 1]) {
+            pivot_idx = i;
+            break;
+        }
+    }
+    if (pivot_idx < 0) {
+        return false;
+    }
+    T min_greater_than_pivot_idx = pivot_idx + 1;
+    for (int i = vec.size() - 1; i > pivot_idx + 1; i--) {
+        if (vec[i] > vec[pivot_idx] && vec[i] < vec[min_greater_than_pivot_idx]) {
+            min_greater_than_pivot_idx = i;
+        }
+    }
+    swap(vec[pivot_idx], vec[min_greater_than_pivot_idx]);
+    sort(vec.begin() + pivot_idx + 1, vec.end());
+    return true;
 }
 
 template<typename T> bool increment_vector(vector<T>& vec, vector<T>& limits) {

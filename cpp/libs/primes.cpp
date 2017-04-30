@@ -18,3 +18,14 @@ vector<bool> compute_sieve(int limit) {
     }
     return sieve;
 }
+
+inline bool is_prime_brute_force(int n) {
+    int sqrt_n = sqrt(n);
+    for (int i = 2; i <= sqrt_n;) {
+        if (!(n % i)) {
+            return false;
+        }
+        i += i == 2 ? 1 : 2;
+    }
+    return true;
+}
