@@ -96,6 +96,10 @@ template<typename T> T pentagonal(T n) {
     return n * (3 * n - 1) / 2;
 }
 
+template<typename T> T hexagonal(T n) {
+    return n * (2 * n - 1);
+}
+
 template<typename T> T int_pow(T a, T b) {
     if (b == 0) {
         return 1;
