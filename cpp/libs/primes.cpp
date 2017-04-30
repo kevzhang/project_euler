@@ -19,6 +19,33 @@ vector<bool> compute_sieve(int limit) {
     return sieve;
 }
 
+pair<vector<int>, vector<bool>> compute_primes_under_with_sieve(int limit) {
+    vector<int> primes;
+    vector<bool> sieve = compute_sieve(limit);
+    int idx = 0;
+    for (int i = 2; i < limit;) {
+        if (sieve[i]) {
+            primes.push_back(i);
+        }
+        i += i == 2 ? 1 : 2;
+    }
+    return {primes, sieve};
+}
+
+vector<int> compute_primes_under(int limit) {
+    vector<int> primes;
+    vector<bool> sieve = compute_sieve(limit);
+    int idx = 0;
+    for (int i = 2; i < limit;) {
+        if (sieve[i]) {
+            primes.push_back(i);
+
+        }
+        i += i == 2 ? 1 : 2;
+    }
+    return primes;
+}
+
 inline bool is_prime_brute_force(int n) {
     int sqrt_n = sqrt(n);
     for (int i = 2; i <= sqrt_n;) {
