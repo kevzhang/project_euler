@@ -3,7 +3,7 @@
 
 using namespace std;
 
-static int LIMIT = 10 * 1000;
+static const int LIMIT = 10 * 1000;
 
 int main() {
     vector<bool> sieve = compute_sieve(LIMIT);

@@ -4,8 +4,8 @@
 
 using namespace std;
 
-static int LIMIT = 1000 * 1000;
-static int TARGET = 4;
+static const int LIMIT = 1000 * 1000;
+static const int TARGET = 4;
 
 int main() {
     vector<short> factor_count_sieve(LIMIT);
