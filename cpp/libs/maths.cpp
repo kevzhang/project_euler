@@ -361,15 +361,11 @@ class BigInteger {
                 _add(data, number[i] - '0', BASE);
             }
         }
-        BigInteger times(unsigned int by) {
-            BigInteger copy = *this;
-            copy._times(copy.data, by, BASE);
-            return copy;
+        void times(unsigned int by) {
+            _times(this->data, by, BASE);
         }
-        BigInteger add(const BigInteger& big) {
-            BigInteger copy = *this;
-            copy._add(copy.data, big.data, BASE);
-            return copy;
+        void add(const BigInteger& big) {
+            _add(this->data, big.data, BASE);
         }
         int compare(const BigInteger& big) {
             vector<unsigned int> this_data = this->data;

@@ -11,7 +11,7 @@ void split(const string& str, char delim, vector<string>& output) {
 	}
 }
 
-int sum_digits(string number) {
+int sum_digits(const string& number) {
     int sum = 0;
     for (int i = 0; i < number.length(); i++) {
         sum += number[i] - '0';
@@ -19,7 +19,19 @@ int sum_digits(string number) {
     return sum;
 }
 
-string to_string(vector<string> vec) {
+inline bool is_palindrome(const string& str) {
+    int lower = 0, upper = str.length() - 1;
+	while (lower < upper) {
+		if (str[lower] != str[upper]) {
+			return false;
+		}
+		lower++;
+		upper--;
+	}
+    return true;
+}
+
+string to_string(const vector<string>& vec) {
 	if (vec.empty()) {
 		return "[]";
 	}
@@ -32,7 +44,7 @@ string to_string(vector<string> vec) {
 	return s;
 }
 
-template<typename T> string to_string(vector<T> vec) {
+template<typename T> string to_string(const vector<T>& vec) {
 	if (vec.empty()) {
 		return "[]";
 	}

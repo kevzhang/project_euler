@@ -15,7 +15,7 @@ int main() {
 	BigInteger result = BigInteger::ZERO();
 	for (int i = 0; i < lines.size(); i++) {
 		BigInteger to_add(lines[i]);
-		result = result.add(to_add);
+		result.add(to_add);
 	}
 	cout << result.to_string().substr(0, LIMIT) << endl;
 	return 0;
