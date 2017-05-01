@@ -112,6 +112,13 @@ class BigInteger {
             }
             return sum;
         }
+        uint32_t num_base_digits() {
+            return data.size();
+        }
+        // this->BASE == big.BASE
+        void swap(BigInteger& big) {
+            this->data.swap(big.data);
+        }
         void reverse_base() {
             reverse(data.begin(), data.end());
         }
