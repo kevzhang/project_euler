@@ -46,6 +46,19 @@ vector<int> compute_primes_under(int limit) {
     return primes;
 }
 
+inline bool is_prime_with_table(const vector<int>& primes, int n) {
+    int sqrt_n = sqrt(n);
+    for (int prime : primes) {
+        if (prime > sqrt_n) {
+            break;
+        }
+        if (!(n % prime)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 inline bool is_prime_brute_force(int n) {
     int sqrt_n = sqrt(n);
     for (int i = 2; i <= sqrt_n;) {
