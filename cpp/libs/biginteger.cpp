@@ -11,8 +11,8 @@ inline uint32_t highest_order(uint32_t n) {
 }
 
 class BigInteger {
-    static const uint64_t BASE = 1L << 32;
     private:
+        uint64_t BASE = 1L << 32;
         // little endian, in increasing order of bits
         vector<uint32_t> data;
         void _add(vector<uint32_t>& number, const vector<uint32_t>& by, unsigned long base) {
@@ -91,16 +91,36 @@ class BigInteger {
         BigInteger(const vector<uint32_t>& vec) {
             data = vec;
         }
+        BigInteger(const long number, uint32_t base) : BigInteger(std::to_string(number), base) {}
         BigInteger(const long number) : BigInteger(std::to_string(number)) {}
-        BigInteger(const string& number) {
+        BigInteger(const string& number) : BigInteger(number, ((uint64_t)1 << 32)) {}
+        BigInteger(const string& number, uint64_t base) {
+            this->BASE = base;
             data = zero();
             for (int i = 0; i < number.length(); i++) {
                 _times(data, 10, BASE);
                 _add(data, number[i] - '0', BASE);
             }
         }
+        bool is_base_palindrome() {
+            size_t lower = 0, upper = data.size() - 1;
+            while (lower < upper) {
+                if (data[lower] != data[upper]) {
+                    return false;
+                }
+                lower++;
+                upper--;
+            }
+            return true;
+        }
+        void reverse_base() {
+            reverse(data.begin(), data.end());
+        }
         void times(uint32_t by) {
             _times(this->data, by, BASE);
+        }
+        void add(const uint32_t by) {
+            _add(this->data, by, BASE);
         }
         void add(const BigInteger& big) {
             _add(this->data, big.data, BASE);

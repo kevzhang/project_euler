@@ -9,15 +9,13 @@ static const int LIMIT = 10 * 1000;
 // given
 static const int MAX_ITERS = 49;
 
-// TODO: optimize BigInteger
 inline bool is_lychrel(int n) {
-    BigInteger big(n);
+    BigInteger big(n, 10);
     for (int i = 0; i < MAX_ITERS; i++) {
-        string num = big.to_string();
-        reverse(num.begin(), num.end());
-        BigInteger reversed(num);
-        big.add(reversed);
-        if (is_palindrome(big.to_string())) {
+        BigInteger copy = big;
+        big.reverse_base();
+        big.add(copy);
+        if(big.is_base_palindrome()) {
             return false;
         }
     }
