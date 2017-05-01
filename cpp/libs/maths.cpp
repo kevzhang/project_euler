@@ -265,3 +265,11 @@ pair<double, double> solve_quadratic(int a, int b, int c) {
 template<typename T> T sum_of_squares(T n) {
     return n * (n + 1) * (2 * n + 1) / 6;
 }
+
+template<typename T> T sum(vector<T> vec) {
+    T sum = 0;
+    for (T item : vec) {
+        sum += item;
+    }
+    return sum;
+}
