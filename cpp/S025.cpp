@@ -1,6 +1,6 @@
 #include <iostream>
 #include <functional>
-#include "maths.cpp"
+#include "biginteger.cpp"
 
 using namespace std;
 

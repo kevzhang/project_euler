@@ -8,8 +8,8 @@ static const int LIMIT = 10 * 1000;
 
 // is a, b, c permutations of each other
 inline bool is_perms(int a, int b, int c) {
-    vector<char> a_freq = digit_frequency_10(a);
-    vector<char> b_freq = digit_frequency_10(b);
+    vector<uint8_t> a_freq = digit_frequency_10(a);
+    vector<uint8_t> b_freq = digit_frequency_10(b);
     return a_freq == b_freq && a_freq == digit_frequency_10(c);
 }
 
