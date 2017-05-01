@@ -1,24 +1,16 @@
 #include <iostream>
 #include "primes.cpp"
+#include "maths.cpp"
 
 using namespace std;
 
 static const int LIMIT = 10 * 1000;
 
-inline vector<char> digit_frequency(int n) {
-    vector<char> digit_freq(10);
-    while (n > 0) {
-        digit_freq[n % 10]++;
-        n /= 10;
-    }
-    return digit_freq;
-}
-
 // is a, b, c permutations of each other
 inline bool is_perms(int a, int b, int c) {
-    vector<char> a_freq = digit_frequency(a);
-    vector<char> b_freq = digit_frequency(b);
-    return a_freq == b_freq && a_freq == digit_frequency(c);
+    vector<char> a_freq = digit_frequency_10(a);
+    vector<char> b_freq = digit_frequency_10(b);
+    return a_freq == b_freq && a_freq == digit_frequency_10(c);
 }
 
 int main() {

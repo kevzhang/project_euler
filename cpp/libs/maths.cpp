@@ -100,6 +100,16 @@ template<typename T> inline T hexagonal(T n) {
     return n * (2 * n - 1);
 }
 
+// base_10 digit frequency
+template<typename T> inline vector<char> digit_frequency_10(T n) {
+    vector<char> digit_freq(10);
+    while (n > 0) {
+        digit_freq[n % 10]++;
+        n /= 10;
+    }
+    return digit_freq;
+}
+
 // base_10 reversal
 template<typename T> T reverse_10(T n) {
     T reversed = 0;
