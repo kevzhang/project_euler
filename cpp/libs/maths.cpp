@@ -88,16 +88,27 @@ inline long binomial(long n, long k) {
     return res;
 }
 
-template<typename T> T triangle(T n) {
+template<typename T> inline T triangle(T n) {
     return n * (n + 1) / 2;
 }
 
-template<typename T> T pentagonal(T n) {
+template<typename T> inline T pentagonal(T n) {
     return n * (3 * n - 1) / 2;
 }
 
-template<typename T> T hexagonal(T n) {
+template<typename T> inline T hexagonal(T n) {
     return n * (2 * n - 1);
+}
+
+// base_10 reversal
+template<typename T> T reverse_10(T n) {
+    T reversed = 0;
+    T remaining = n;
+    while (remaining) {
+        reversed = 10 * reversed + remaining % 10;
+        remaining /= 10;
+    }
+    return reversed;
 }
 
 template<typename T> T int_pow(T a, T b) {

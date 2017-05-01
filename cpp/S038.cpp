@@ -1,18 +1,9 @@
 #include <iostream>
+#include "maths.cpp"
 
 using namespace std;
 
 static const int LIMIT = 10 * 1000;
-
-inline int reverse(int n) {
-    int reversed = 0;
-    int remaining = n;
-    while (remaining) {
-        reversed = 10 * reversed + remaining % 10;
-        remaining /= 10;
-    }
-    return reversed;
-}
 
 // is concat(k, 2k, ..., nk) pandigital?
 inline int is_pandigital(int k, int n) {
@@ -32,7 +23,7 @@ inline int is_pandigital(int k, int n) {
             }
         }
     }
-    return n_digits == 9 ? reverse(reversed_pan) : -1;
+    return n_digits == 9 ? reverse_10(reversed_pan) : -1;
 }
 
 int main() {
