@@ -2,14 +2,6 @@
 
 using namespace std;
 
-inline uint32_t highest_order(uint32_t n) {
-    uint32_t mask = 1;
-    while (n >>= 1) {
-        mask <<= 1;
-    }
-    return mask;
-}
-
 class BigInteger {
     private:
         uint64_t BASE = 1L << 32;
@@ -113,6 +105,13 @@ class BigInteger {
             }
             return true;
         }
+        uint64_t sum_base() {
+            uint64_t sum = 0;
+            for (int i = 0; i < data.size(); i++) {
+                sum += data[i];
+            }
+            return sum;
+        }
         void reverse_base() {
             reverse(data.begin(), data.end());
         }
@@ -122,9 +121,11 @@ class BigInteger {
         void add(const uint32_t by) {
             _add(this->data, by, BASE);
         }
+        // this->BASE == big.BASE
         void add(const BigInteger& big) {
             _add(this->data, big.data, BASE);
         }
+        // this->BASE == big.BASE
         int compare(const BigInteger& big) {
             vector<uint32_t> this_data = this->data;
             vector<uint32_t> that_data = big.data;

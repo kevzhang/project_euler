@@ -265,11 +265,3 @@ pair<double, double> solve_quadratic(int a, int b, int c) {
 template<typename T> T sum_of_squares(T n) {
     return n * (n + 1) * (2 * n + 1) / 6;
 }
-
-inline unsigned int highest_order(unsigned int n) {
-    unsigned int mask = 1;
-    while (n >>= 1) {
-        mask <<= 1;
-    }
-    return mask;
-}
