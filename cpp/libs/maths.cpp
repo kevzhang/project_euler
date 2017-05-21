@@ -100,6 +100,14 @@ template<typename T> inline T hexagonal(T n) {
     return n * (2 * n - 1);
 }
 
+template<typename T> inline T heptagonal(T n) {
+    return n * (5 * n - 3) / 2;
+}
+
+template<typename T> inline T octagonal(T n) {
+    return n * (3 * n - 2);
+}
+
 // base_10 digit frequency
 template<typename T> inline vector<uint8_t> digit_frequency_10(T n) {
     vector<uint8_t> digit_freq(10);
